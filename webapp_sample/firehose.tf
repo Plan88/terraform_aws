@@ -14,8 +14,8 @@ resource "aws_kinesis_firehose_delivery_stream" "front_api_log" {
     }
 
     custom_time_zone    = "Asia/Tokyo"
-    prefix              = "webapp_sample/front_api_log/!{partitionKeyFromQuery:year}/!{partitionKeyFromQuery:month}/!{partitionKeyFromQuery:day}/!{partitionKeyFromQuery:hour}/"
-    error_output_prefix = "webapp_sample/front_api_log_error/!{timestamp:yyyy}/!{timestamp:MM}/!{timestamp:dd}/!{timestamp:HH}/!{firehose:error-output-type}/"
+    prefix              = "webapp_sample/front_api_log/!{partitionKeyFromLambda:year}/!{partitionKeyFromLambda:month}/!{partitionKeyFromLambda:day}/!{partitionKeyFromLambda:hour}/"
+    error_output_prefix = "webapp_sample/front_api_log_error/!{timestamp:yyyy/MM/dd/HH}/!{firehose:error-output-type}/"
 
 
     processing_configuration {
