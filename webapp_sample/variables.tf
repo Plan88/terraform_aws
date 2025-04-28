@@ -6,8 +6,3 @@ variable "region" {
 variable "service_identifier" {
   type = string
 }
-
-variable "global_access_ips" {
-  type    = list(string)
-  default = []
-}

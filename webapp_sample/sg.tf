@@ -13,7 +13,7 @@ resource "aws_security_group_rule" "ingress_from_global" {
   from_port         = 80
   to_port           = 80
   protocol          = "tcp"
-  cidr_blocks       = var.global_access_ips
+  cidr_blocks       = split(",", data.aws_ssm_parameter.global_ips.value)
 }
 
 resource "aws_vpc_security_group_ingress_rule" "self" {
