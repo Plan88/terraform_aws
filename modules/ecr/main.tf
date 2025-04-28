@@ -11,10 +11,10 @@ resource "aws_ecr_lifecycle_policy" "main" {
         rulePriority = 1
         description  = "Expire untagged images older than ${var.expiration_days} days"
         selection = {
-          tasStatus  = "untagged"
-          countType  = "sinceImagePushed"
-          countUnit  = "days"
-          countNumer = var.expiration_days
+          tagStatus   = "untagged"
+          countType   = "sinceImagePushed"
+          countUnit   = "days"
+          countNumber = var.expiration_days
         }
         action = {
           type = "expire"
