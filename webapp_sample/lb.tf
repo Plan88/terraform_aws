@@ -3,7 +3,7 @@ resource "aws_lb" "main" {
   name               = var.service_identifier
   internal           = false
   subnets            = local.public_subnet_ids
-  security_groups    = [aws_security_group.main.id]
+  security_groups    = [aws_security_group.alb.id]
 }
 
 resource "aws_lb_listener" "main" {

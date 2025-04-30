@@ -48,6 +48,10 @@ resource "aws_ecs_task_definition" "main" {
     }
   ])
 
+  runtime_platform {
+    operating_system_family = "LINUX"
+    cpu_architecture        = "ARM64"
+  }
 }
 
 resource "aws_ecs_service" "main" {
@@ -56,10 +60,19 @@ resource "aws_ecs_service" "main" {
   task_definition = aws_ecs_task_definition.main.arn
   desired_count   = 1
 
+  capacity_provider_strategy {
+    capacity_provider = "FARGATE"
+    base              = 1
+    weight            = 100
+  }
   load_balancer {
     target_group_arn = aws_lb_target_group.main.arn
     container_name   = "app"
     container_port   = 80
+  }
+  network_configuration {
+    subnets         = local.private_subnet_ids
+    security_groups = [aws_security_group.ecs.id]
   }
   lifecycle {
     ignore_changes = [desired_count, task_definition]
