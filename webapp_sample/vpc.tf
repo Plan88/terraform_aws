@@ -1,29 +1,43 @@
 data "aws_vpc" "main" {
-  id = "vpc-0613b26d4f30241e9"
+  tags = {
+    Name = "vpc1"
+  }
 }
 
 data "aws_subnet" "public_a" {
-  id = "subnet-089c14c9c861541eb"
+  tags = {
+    Name = "vpc1-public_a"
+  }
 }
 
 data "aws_subnet" "public_c" {
-  id = "subnet-0e373fa188267d95a"
+  tags = {
+    Name = "vpc1-public_c"
+  }
 }
 
 data "aws_subnet" "public_d" {
-  id = "subnet-0d4f15fa2609db77f"
+  tags = {
+    Name = "vpc1-public_d"
+  }
 }
 
 data "aws_subnet" "private_a" {
-  id = "subnet-0016d7cd884a3932e"
+  tags = {
+    Name = "vpc1-private_a"
+  }
 }
 
 data "aws_subnet" "private_c" {
-  id = "subnet-0e77dfb8597a88c6f"
+  tags = {
+    Name = "vpc1-private_c"
+  }
 }
 
 data "aws_subnet" "private_d" {
-  id = "subnet-084f1a2dc49116374"
+  tags = {
+    Name = "vpc1-private_d"
+  }
 }
 
 locals {
