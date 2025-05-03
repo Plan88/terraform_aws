@@ -26,6 +26,11 @@ resource "aws_lb_target_group" "main" {
   protocol    = "HTTP"
   vpc_id      = data.aws_vpc.main.id
   target_type = "ip"
+  health_check {
+    enabled  = true
+    protocol = "http"
+    path     = "/health"
+  }
 }
 
 resource "aws_lb_listener_rule" "main" {
