@@ -18,3 +18,7 @@ resource "aws_iam_role_policy_attachment" "ecs_task_exec" {
   role       = aws_iam_role.ecs_task_exec.name
   policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy"
 }
+
+data "aws_iam_role" "github_actions_codebuild" {
+  name = "github-actions-codebuild"
+}

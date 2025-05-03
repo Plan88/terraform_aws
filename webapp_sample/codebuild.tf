@@ -1,6 +1,6 @@
 resource "aws_codebuild_project" "github_actions" {
-  name         = "terraform_aws"
-  service_role = aws_iam_role.github_actions_codebuild.arn
+  name         = "webapp_sample_rs"
+  service_role = data.aws_iam_role.github_actions_codebuild.arn
 
   environment {
     compute_type = "BUILD_GENERAL1_SMALL"
@@ -10,7 +10,7 @@ resource "aws_codebuild_project" "github_actions" {
 
   source {
     type     = "GITHUB"
-    location = var.github_terraform_aws_url
+    location = var.github_webapp_sample_rs_url
   }
 
   artifacts {
